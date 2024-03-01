@@ -34,14 +34,14 @@ git_repository(
 # External dependency for torch_tensorrt if you already have precompiled binaries.
 local_repository(
     name = "torch_tensorrt",
-    path = "/opt/conda/lib/python3.6/site-packages/torch_tensorrt",
+    path = "/opt/conda/lib/python3.10/site-packages/torch_tensorrt",
 )
 
 # CUDA should be installed on the system locally
 new_local_repository(
     name = "cuda",
     build_file = "@//third_party/cuda:BUILD",
-    path = "/usr/local/cuda-10.2/",
+    path = "/usr/local/cuda-12.2/",
 )
 
 new_local_repository(
@@ -63,14 +63,14 @@ new_local_repository(
 
 new_local_repository(
     name = "libtorch",
-    path = "/usr/local/lib/python3.6/dist-packages/torch",
+    path = "/usr/local/lib/python3.10/dist-packages/torch",
     build_file = "third_party/libtorch/BUILD"
 )
 
 # NOTE: Unused on aarch64-jetson with NVIDIA provided PyTorch distribu†ion
 new_local_repository(
     name = "libtorch_pre_cxx11_abi",
-    path = "/usr/local/lib/python3.6/dist-packages/torch",
+    path = "/usr/local/lib/python3.10/dist-packages/torch",
     build_file = "third_party/libtorch/BUILD"
 )
 
@@ -90,7 +90,6 @@ new_local_repository(
 # Development Dependencies (optional - comment out on aarch64)
 #########################################################################
 
-pip_install(
-    name = "devtools_deps",
-    requirements = "//:requirements-dev.txt",
-)
+# pip_install( name = "devtools_deps",
+#     requirements = "//:requirements-dev.txt",
+# )
